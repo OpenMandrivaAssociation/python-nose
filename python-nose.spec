@@ -1,7 +1,7 @@
 %define module	nose
 %define name   	python-%{module}
 %define version 0.10.1 
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: Unittest-based testing framework for Python
 Name: 	 %{name}
@@ -12,6 +12,7 @@ License: LGPL
 Group: 	 Development/Python
 Url: 	 http://code.google.com/p/python-nose/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildArch: noarch
 BuildRequires: python-devel
 
 %description
