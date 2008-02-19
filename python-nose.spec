@@ -39,7 +39,7 @@ possible without resorting to too much magic.
 %defattr(-,root,root)
 %doc AUTHORS CHANGELOG NEWS README.txt examples/ doc/
 %{_bindir}/*
-%{py_sitedir}/*.info
+%{py_sitedir}/*.egg-info
 %{py_sitedir}/%{module}*/*
 %{_mandir}/man1/nosetests.*
 
