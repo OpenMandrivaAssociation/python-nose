@@ -1,24 +1,24 @@
 %define module	nose
 %define name   	python-%{module}
-%define version 0.10.1 
-%define release %mkrel 2
+%define version 0.10.2
+%define release %mkrel 1
 
 Summary: Unittest-based testing framework for Python
 Name: 	 %{name}
 Version: %{version}
 Release: %{release}
 Source0: %{module}-%{version}.tar.lzma
-License: LGPL
+License: LGPLv2+
 Group: 	 Development/Python
 Url: 	 http://code.google.com/p/python-nose/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildArch: noarch
 BuildRequires: python-devel
+BuildArch: noarch
 
 %description
-nose provides an alternate test discovery and running process for
-unittest that mimics the behavior of py.test as much as is reasonably
-possible without resorting to too much magic.
+nose is a Python test discovery and execution infrastructure
+alternative to unittest that mimics the behavior of py.test as much as
+is reasonably possible without resorting to too much magic.
 
 %prep
 %setup -q -n %{module}-%{version}
