@@ -1,19 +1,19 @@
 %define module	nose
-%define name   	python-%{module}
-%define version 0.10.3
-%define release %mkrel 1
+%define name	python-%{module}
+%define version	0.10.4
+%define release	%mkrel 1
 
-Summary: Unittest-based testing framework for Python
-Name: 	 %{name}
-Version: %{version}
-Release: %{release}
-Source0: %{module}-%{version}.tar.lzma
-License: LGPLv2+
-Group: 	 Development/Python
-Url: 	 http://code.google.com/p/python-nose/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: python-devel
-BuildArch: noarch
+Summary:	Unittest-based testing framework for Python
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Source0:	%{module}-%{version}.tar.lzma
+License:	LGPLv2+
+Group:		Development/Python
+Url:		http://code.google.com/p/python-nose/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	python-devel
+BuildArch:	noarch
 
 %description
 nose is a Python test discovery and execution infrastructure
