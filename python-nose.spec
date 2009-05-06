@@ -1,7 +1,7 @@
 %define module	nose
 %define name	python-%{module}
 %define version	0.10.4
-%define release	%mkrel 2
+%define release	%mkrel 3
 
 Summary:	Unittest-based testing framework for Python
 Name:		%{name}
@@ -10,7 +10,7 @@ Release:	%{release}
 Source0:	%{module}-%{version}.tar.lzma
 License:	LGPLv2+
 Group:		Development/Python
-Url:		http://code.google.com/p/python-nose/
+Url:		http://python-nose.googlecode.com/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	python-devel
 BuildArch:	noarch
@@ -22,8 +22,6 @@ is reasonably possible without resorting to too much magic.
 
 %prep
 %setup -q -n %{module}-%{version}
-
-%build
 
 %install
 %__rm -rf %{buildroot}
@@ -40,6 +38,6 @@ is reasonably possible without resorting to too much magic.
 %doc AUTHORS CHANGELOG NEWS README.txt examples/ doc/
 %{_bindir}/*
 %{py_sitedir}/*.egg-info
+%{py_sitedir}/%{module}
 %{py_sitedir}/%{module}*/*
 %{_mandir}/man1/nosetests.*
-
