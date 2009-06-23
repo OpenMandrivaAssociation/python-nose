@@ -1,19 +1,20 @@
 %define module	nose
 %define name	python-%{module}
-%define version	0.10.4
-%define release	%mkrel 3
+%define version	0.11.0
+%define release	%mkrel 1
 
 Summary:	Unittest-based testing framework for Python
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	%{module}-%{version}.tar.lzma
+Source0:	%{module}-%{version}.tar.gz
 License:	LGPLv2+
 Group:		Development/Python
 Url:		http://python-nose.googlecode.com/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	python-devel
 BuildArch:	noarch
+BuildRequires:	python-sphinx
+%py_requires -d
 
 %description
 nose is a Python test discovery and execution infrastructure
@@ -24,6 +25,8 @@ is reasonably possible without resorting to too much magic.
 %setup -q -n %{module}-%{version}
 
 %install
+%__make -C doc/ html
+
 %__rm -rf %{buildroot}
 %__python setup.py install --root=%{buildroot} 
 %__mkdir -p %{buildroot}%{_mandir}/man1/
@@ -35,7 +38,7 @@ is reasonably possible without resorting to too much magic.
 
 %files 
 %defattr(-,root,root)
-%doc AUTHORS CHANGELOG NEWS README.txt examples/ doc/
+%doc AUTHORS CHANGELOG NEWS README.txt lgpl.txt examples/ doc/.build/html
 %{_bindir}/*
 %{py_sitedir}/*.egg-info
 %{py_sitedir}/%{module}
