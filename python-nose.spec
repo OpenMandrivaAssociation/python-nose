@@ -13,7 +13,7 @@ Group:		Development/Python
 Url:		http://python-nose.googlecode.com/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch:	noarch
-BuildRequires:	python-sphinx
+BuildRequires:	python-sphinx >= 0.6.0
 %py_requires -d
 
 %description
