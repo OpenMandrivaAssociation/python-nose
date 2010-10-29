@@ -1,7 +1,7 @@
 %define module	nose
 %define name	python-%{module}
 %define version	0.11.4
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 Summary:	Unittest-based testing framework for Python
 Name:		%{name}
