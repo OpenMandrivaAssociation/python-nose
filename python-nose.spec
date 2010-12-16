@@ -1,7 +1,7 @@
 %define module	nose
 %define name	python-%{module}
-%define version	0.11.4
-%define release	%mkrel 2
+%define version	1.0.0
+%define release	%mkrel 1
 
 Summary:	Unittest-based testing framework for Python
 Name:		%{name}
@@ -17,9 +17,18 @@ BuildRequires:	python-sphinx >= 0.6.0
 %py_requires -d
 
 %description
-nose is a Python test discovery and execution infrastructure
-alternative to unittest that mimics the behavior of py.test as much as
-is reasonably possible without resorting to too much magic.
+nose extends the test loading and running features of unittest, making it easier
+to write, find and run tests.
+
+By default, nose will run tests in files or directories under the current
+working directory whose names include "test" or "Test" at a word boundary (like
+"test_this" or "functional_test" or "TestClass" but not "libtest"). Test output
+is similar to that of unittest, but also includes captured stdout output from
+failing tests, for easy print-style debugging.
+
+These features, and many more, are customizable through the use of plugins.
+Plugins included with nose provide support for doctest, code coverage and
+profiling, flexible attribute-based test selection, output capture and more.
 
 %prep
 %setup -q -n %{module}-%{version}
