@@ -1,11 +1,11 @@
-%define bootstrap 1
+%define bootstrap 0
 
 %define module	nose
 
 Summary:	Unittest-based testing framework for Python
 Name:		python-%{module}
 Version:	1.2.1
-Release:	3
+Release:	4
 Source0:	%{module}-%{version}.tar.gz
 License:	LGPLv2+
 Group:		Development/Python
@@ -54,5 +54,8 @@ profiling, flexible attribute-based test selection, output capture and more.
 %{py_sitedir}/*
 
 %changelog
+* Fri Feb  8 2013 pcpa <paulo.cesar.pereira.de.andrade@gmail.com> - 1.2.1-4
+- Rebuild after rebootstrap of python-sphinx.
+
 * Fri Feb  8 2013 pcpa <paulo.cesar.pereira.de.andrade@gmail.com> - 1.2.1-3
 - Add python-distribute to build requires.
