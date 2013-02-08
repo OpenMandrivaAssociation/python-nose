@@ -1,14 +1,11 @@
 %define bootstrap 1
 
 %define module	nose
-%define name	python-%{module}
-%define version	1.2.1
-%define release	%mkrel 2
 
 Summary:	Unittest-based testing framework for Python
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		python-%{module}
+Version:	1.2.1
+Release:	3
 Source0:	%{module}-%{version}.tar.gz
 License:	LGPLv2+
 Group:		Development/Python
@@ -17,6 +14,7 @@ BuildArch:	noarch
 %if !%{bootstrap}
 BuildRequires:	python-sphinx >= 0.6.0
 %endif
+BuildRequires:	python-distribute
 %py_requires -d
 
 %description
@@ -52,7 +50,9 @@ profiling, flexible attribute-based test selection, output capture and more.
 %doc doc/.build/html
 %endif
 %{_bindir}/*
-#% {py_sitedir}/%{module}-%{version}.egg-info
-#% {py_sitedir}/%{module}*/*
 %{_mandir}/man1/nosetests.*
 %{py_sitedir}/*
+
+%changelog
+* Fri Feb  8 2013 pcpa <paulo.cesar.pereira.de.andrade@gmail.com> - 1.2.1-3
+- Add python-distribute to build requires.
