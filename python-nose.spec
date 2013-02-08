@@ -1,3 +1,5 @@
+%define bootstrap 1
+
 %define module	nose
 %define name	python-%{module}
 %define version	1.2.1
@@ -12,7 +14,9 @@ License:	LGPLv2+
 Group:		Development/Python
 Url:		http://python-nose.googlecode.com/
 BuildArch:	noarch
+%if !%{bootstrap}
 BuildRequires:	python-sphinx >= 0.6.0
+%endif
 %py_requires -d
 
 %description
@@ -33,7 +37,9 @@ profiling, flexible attribute-based test selection, output capture and more.
 %setup -q -n %{module}-%{version}
 
 %install
+%if !%{bootstrap}
 %__make -C doc/ html
+%endif
 
 %__python setup.py install --root=%{buildroot} 
 %__mkdir -p %{buildroot}%{_mandir}/man1/
@@ -41,7 +47,10 @@ profiling, flexible attribute-based test selection, output capture and more.
 %__lzma -z %{buildroot}%{_mandir}/man1/nosetests.1
 
 %files 
-%doc AUTHORS CHANGELOG NEWS README.txt lgpl.txt examples/ doc/.build/html
+%doc AUTHORS CHANGELOG NEWS README.txt lgpl.txt examples
+%if !%{bootstrap}
+%doc doc/.build/html
+%endif
 %{_bindir}/*
 #% {py_sitedir}/%{module}-%{version}.egg-info
 #% {py_sitedir}/%{module}*/*
