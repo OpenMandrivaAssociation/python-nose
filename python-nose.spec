@@ -4,9 +4,9 @@
 
 Summary:	Unittest-based testing framework for Python
 Name:		python-%{module}
-Version:	1.2.1
-Release:	4
-Source0:	%{module}-%{version}.tar.gz
+Version:	1.3.0
+Release:	1
+Source0:	https://pypi.python.org/packages/source/n/nose/nose-%{version}.tar.gz
 License:	LGPLv2+
 Group:		Development/Python
 Url:		http://python-nose.googlecode.com/
@@ -51,7 +51,7 @@ profiling, flexible attribute-based test selection, output capture and more.
 %endif
 %{_bindir}/*
 %{_mandir}/man1/nosetests.*
-%{py_sitedir}/*
+%{py_puresitedir}/*
 
 %changelog
 * Fri Feb  8 2013 pcpa <paulo.cesar.pereira.de.andrade@gmail.com> - 1.2.1-4
@@ -59,3 +59,4 @@ profiling, flexible attribute-based test selection, output capture and more.
 
 * Fri Feb  8 2013 pcpa <paulo.cesar.pereira.de.andrade@gmail.com> - 1.2.1-3
 - Add python-distribute to build requires.
+
