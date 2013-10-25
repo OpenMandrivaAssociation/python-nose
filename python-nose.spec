@@ -15,7 +15,8 @@ BuildArch:	noarch
 BuildRequires:	python-sphinx >= 0.6.0
 %endif
 BuildRequires:	python-distribute
-%py_requires -d
+BuildRequires:	python-devel
+
 
 %description
 nose extends the test loading and running features of unittest,
@@ -52,11 +53,3 @@ profiling, flexible attribute-based test selection, output capture and more.
 %{_bindir}/*
 %{_mandir}/man1/nosetests.*
 %{py_puresitedir}/*
-
-%changelog
-* Fri Feb  8 2013 pcpa <paulo.cesar.pereira.de.andrade@gmail.com> - 1.2.1-4
-- Rebuild after rebootstrap of python-sphinx.
-
-* Fri Feb  8 2013 pcpa <paulo.cesar.pereira.de.andrade@gmail.com> - 1.2.1-3
-- Add python-distribute to build requires.
-
