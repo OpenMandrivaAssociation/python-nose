@@ -1,24 +1,22 @@
 %define bootstrap 0
-
 %define module	nose
 
 Summary:	Unittest-based testing framework for Python
 Name:		python-%{module}
 Version:	1.3.0
 Release:	2
-Source0:	https://pypi.python.org/packages/source/n/nose/nose-%{version}.tar.gz
 License:	LGPLv2+
 Group:		Development/Python
 Url:		http://python-nose.googlecode.com/
+Source0:	https://pypi.python.org/packages/source/n/nose/nose-%{version}.tar.gz
 BuildArch:	noarch
 %if !%{bootstrap}
 BuildRequires:	python-sphinx >= 0.6.0
 %endif
 BuildRequires:	python-distribute
-BuildRequires:	python-devel
 BuildRequires:	python3-distribute
-BuildRequires:	python3-devel
-
+BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 
 %description
 nose extends the test loading and running features of unittest,
@@ -52,10 +50,8 @@ These features, and many more, are customizable through the use of plugins.
 Plugins included with nose provide support for doctest, code coverage and
 profiling, flexible attribute-based test selection, output capture and more.
 
-
 %prep
 %setup -q -c
-
 mv %{module}-%{version} python2
 cp -r python2 python3
 
@@ -71,7 +67,6 @@ python3 setup.py install --root=%{buildroot}
 mv %{buildroot}/usr/man/man1/nosetests.1 %{buildroot}%{_mandir}/man1/python3-nosetests.1
 mv %{buildroot}/%{_bindir}/nosetests %{buildroot}/%{_bindir}/python3-nosetests
 popd
-
 
 pushd python2
 %if !%{bootstrap}
@@ -101,3 +96,4 @@ popd
 %{_bindir}/python3-nosetests
 %{_mandir}/man1/python3-nosetests.*
 %{py3_puresitedir}/*
+
