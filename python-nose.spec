@@ -5,7 +5,7 @@
 Summary:	Unittest-based testing framework for Python
 Name:		python-%{module}
 Version:	1.2.1
-Release:	4
+Release:	5
 Source0:	%{module}-%{version}.tar.gz
 License:	LGPLv2+
 Group:		Development/Python
