@@ -15,7 +15,7 @@ BuildArch:	noarch
 BuildRequires:	python-sphinx >= 0.6.0
 %endif
 BuildRequires:	python-distribute
-%py_requires -d
+BuildRequires:  pkgconfig(python)
 
 %description
 nose extends the test loading and running features of unittest,
