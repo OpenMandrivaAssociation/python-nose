@@ -2,9 +2,10 @@
 %define module	nose
 
 Summary:	Unittest-based testing framework for Python
+
 Name:		python-%{module}
-Version:	1.3.0
-Release:	6
+Version:	1.3.3
+Release:	1
 License:	LGPLv2+
 Group:		Development/Python
 Url:		http://python-nose.googlecode.com/
@@ -34,6 +35,7 @@ profiling, flexible attribute-based test selection, output capture and more.
 
 %package -n python3-%{module}
 Summary:	Unittest-based testing framework for Python3
+
 Requires:	python3
 
 %description -n python3-%{module}
@@ -96,4 +98,5 @@ popd
 %{_bindir}/python3-nosetests
 %{_mandir}/man1/python3-nosetests.*
 %{py3_puresitedir}/*
+
 

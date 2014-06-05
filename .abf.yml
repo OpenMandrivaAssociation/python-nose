@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   nose-1.3.0.tar.gz: bd1bb889e421948ca57595e9e8d52246cb308294
+sources:
+  nose-1.3.3.tar.gz: cad94d4c58ce82d35355497a1c869922a603a9a5
