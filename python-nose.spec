@@ -1,11 +1,11 @@
-%define bootstrap 0
+%define bootstrap 1
 %define module	nose
 
 Summary:	Unittest-based testing framework for Python
 
 Name:		python-%{module}
 Version:	1.3.3
-Release:	2
+Release:	3
 License:	LGPLv2+
 Group:		Development/Python
 Url:		http://python-nose.googlecode.com/
@@ -14,10 +14,11 @@ BuildArch:	noarch
 %if !%{bootstrap}
 BuildRequires:	python-sphinx >= 0.6.0
 %endif
+BuildRequires:	python2-distribute
 BuildRequires:	python-distribute
-BuildRequires:	python3-distribute
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(python3)
+%rename		python3-%{module}
 
 %description
 nose extends the test loading and running features of unittest,
@@ -33,12 +34,12 @@ These features, and many more, are customizable through the use of plugins.
 Plugins included with nose provide support for doctest, code coverage and
 profiling, flexible attribute-based test selection, output capture and more.
 
-%package -n python3-%{module}
-Summary:	Unittest-based testing framework for Python3
+%package -n python2-%{module}
+Summary:	Unittest-based testing framework for Python2
 
-Requires:	python3
+Requires:	python2
 
-%description -n python3-%{module}
+%description -n python2-%{module}
 nose extends the test loading and running features of unittest,
 making it easier to write, find and run tests.
 
@@ -58,6 +59,18 @@ mv %{module}-%{version} python2
 cp -r python2 python3
 
 %install
+# python2 goes first so python3 can overwrite common files
+pushd python2
+%if !%{bootstrap}
+%make -C doc/ html
+%endif
+
+python2 setup.py install --root=%{buildroot} 
+mkdir -p %{buildroot}%{_mandir}/man1
+mv %{buildroot}/usr/man/man1/nosetests.1 %{buildroot}%{_mandir}/man1/python2-nosetests.1
+mv %{buildroot}/%{_bindir}/nosetests %{buildroot}/%{_bindir}/python2-nosetests
+popd
+
 pushd python3
 # We need python3-sphinx first
 # %if !%{bootstrap}
@@ -66,37 +79,26 @@ pushd python3
 
 mkdir -p %{buildroot}%{_mandir}/man1/
 python3 setup.py install --root=%{buildroot}
-mv %{buildroot}/usr/man/man1/nosetests.1 %{buildroot}%{_mandir}/man1/python3-nosetests.1
-mv %{buildroot}/%{_bindir}/nosetests %{buildroot}/%{_bindir}/python3-nosetests
-popd
-
-pushd python2
-%if !%{bootstrap}
-%make -C doc/ html
-%endif
-
-python setup.py install --root=%{buildroot} 
 mv %{buildroot}/usr/man/man1/nosetests.1 %{buildroot}%{_mandir}/man1/
 popd
 
+
 %files 
-%doc python2/AUTHORS python2/CHANGELOG python2/NEWS python2/README.txt python2/lgpl.txt python2/examples
+%doc python3/AUTHORS python3/CHANGELOG python3/NEWS python3/README.txt python3/lgpl.txt python3/examples
 %if !%{bootstrap}
-%doc python2/doc/.build/html
+%doc python3/doc/.build/html
 %endif
 %{_bindir}/nosetests
-%{_bindir}/nosetests-2*
+%{_bindir}/nosetests-3*
 %{_mandir}/man1/nosetests.*
 %{py_puresitedir}/*
 
-%files -n python3-%{module}
-%doc python3/AUTHORS python3/CHANGELOG python3/NEWS python3/README.txt python3/lgpl.txt python3/examples
+%files -n python2-%{module}
+%doc python2/AUTHORS python2/CHANGELOG python2/NEWS python2/README.txt python2/lgpl.txt python2/examples
 # %if !%{bootstrap}
 # %doc python3/doc/.build/html
 # %endif
-%{_bindir}/nosetests-3*
-%{_bindir}/python3-nosetests
-%{_mandir}/man1/python3-nosetests.*
-%{py3_puresitedir}/*
-
-
+%{_bindir}/nosetests-2*
+%{_bindir}/python2-nosetests
+%{_mandir}/man1/python2-nosetests.*
+%{py2_puresitedir}/*
