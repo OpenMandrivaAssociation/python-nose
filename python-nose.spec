@@ -5,7 +5,7 @@ Summary:	Unittest-based testing framework for Python
 
 Name:		python-%{module}
 Version:	1.3.3
-Release:	3
+Release:	4
 License:	LGPLv2+
 Group:		Development/Python
 Url:		http://python-nose.googlecode.com/
