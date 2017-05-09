@@ -4,12 +4,12 @@
 Summary:	Unittest-based testing framework for Python
 
 Name:		python-%{module}
-Version:	1.3.4
-Release:	4
+Version:	1.3.7
+Release:	1
 License:	LGPLv2+
 Group:		Development/Python
-Url:		http://python-nose.googlecode.com/
-Source0:	https://pypi.python.org/packages/source/n/nose/nose-%{version}.tar.gz
+Url:		https://github.com/nose-devs/nose
+Source0:	https://github.com/nose-devs/nose/archive/release_%{version}.tar.gz
 BuildArch:	noarch
 %if !%{bootstrap}
 BuildRequires:	python-sphinx >= 0.6.0
@@ -55,7 +55,7 @@ profiling, flexible attribute-based test selection, output capture and more.
 
 %prep
 %setup -q -c
-mv %{module}-%{version} python2
+mv %{module}-release_%{version} python2
 cp -r python2 python3
 
 %install
