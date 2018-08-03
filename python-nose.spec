@@ -88,17 +88,15 @@ popd
 %if !%{bootstrap}
 %doc python3/doc/.build/html
 %endif
-%{_bindir}/nosetests
 %{_bindir}/nosetests-3*
 %{_mandir}/man1/nosetests.*
 %{py_puresitedir}/*
 
 %files -n python2-%{module}
 %doc python2/AUTHORS python2/CHANGELOG python2/NEWS python2/README.txt python2/lgpl.txt python2/examples
-# %if !%{bootstrap}
-# %doc python3/doc/.build/html
-# %endif
-%{_bindir}/nosetests-2*
+%if !%{bootstrap}
+%doc python3/doc/.build/html
+%endif
 %{_bindir}/python2-nosetests
 %{_mandir}/man1/python2-nosetests.*
 %{py2_puresitedir}/*
