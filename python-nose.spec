@@ -88,6 +88,7 @@ popd
 %if !%{bootstrap}
 %doc python3/doc/.build/html
 %endif
+%{_bindir}/nosetests
 %{_bindir}/nosetests-3*
 %{_mandir}/man1/nosetests.*
 %{py_puresitedir}/*
@@ -97,6 +98,7 @@ popd
 %if !%{bootstrap}
 %doc python3/doc/.build/html
 %endif
+%{_bindir}/nosetests-2*
 %{_bindir}/python2-nosetests
 %{_mandir}/man1/python2-nosetests.*
 %{py2_puresitedir}/*
