@@ -73,9 +73,9 @@ popd
 
 pushd python3
 # We need python3-sphinx first
-# %if !%{bootstrap}
-# %make -C doc/ html
-# %endif
+%if !%{bootstrap}
+%make -C doc/ html
+%endif
 
 mkdir -p %{buildroot}%{_mandir}/man1/
 python3 setup.py install --root=%{buildroot}
