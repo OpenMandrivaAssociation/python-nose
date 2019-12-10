@@ -1,17 +1,17 @@
-%define bootstrap 1
+%bcond_without bootstrap
 %define module	nose
 
 Summary:	Unittest-based testing framework for Python
 
 Name:		python-%{module}
 Version:	1.3.7
-Release:	4
+Release:	5
 License:	LGPLv2+
 Group:		Development/Python
 Url:		https://github.com/nose-devs/nose
 Source0:	https://github.com/nose-devs/nose/archive/release_%{version}.tar.gz
 BuildArch:	noarch
-%if !%{bootstrap}
+%if ! %{with bootstrap}
 BuildRequires:	python-sphinx >= 0.6.0
 %endif
 BuildRequires:	python2-distribute
@@ -61,7 +61,7 @@ cp -r python2 python3
 %install
 # python2 goes first so python3 can overwrite common files
 pushd python2
-%if !%{bootstrap}
+%if ! %{with bootstrap}
 %make -C doc/ html
 %endif
 
@@ -73,7 +73,7 @@ popd
 
 pushd python3
 # We need python3-sphinx first
-%if !%{bootstrap}
+%if ! %{with bootstrap}
 %make -C doc/ html
 %endif
 
@@ -85,7 +85,7 @@ popd
 
 %files 
 %doc python3/AUTHORS python3/CHANGELOG python3/NEWS python3/README.txt python3/lgpl.txt python3/examples
-%if !%{bootstrap}
+%if ! %{with bootstrap}
 %doc python3/doc/.build/html
 %endif
 %{_bindir}/nosetests
@@ -95,10 +95,10 @@ popd
 
 %files -n python2-%{module}
 %doc python2/AUTHORS python2/CHANGELOG python2/NEWS python2/README.txt python2/lgpl.txt python2/examples
-%if !%{bootstrap}
+%if ! %{with bootstrap}
 %doc python3/doc/.build/html
 %endif
-#% {_bindir}/nosetests-2*
+%{_bindir}/nosetests-2*
 %{_bindir}/python2-nosetests
 %{_mandir}/man1/python2-nosetests.*
 %{py2_puresitedir}/*
