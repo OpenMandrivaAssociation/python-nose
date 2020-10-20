@@ -5,7 +5,7 @@ Summary:	Unittest-based testing framework for Python
 
 Name:		python-%{module}
 Version:	1.3.7
-Release:	6
+Release:	7
 License:	LGPLv2+
 Group:		Development/Python
 Url:		https://github.com/nose-devs/nose
@@ -33,8 +33,8 @@ BuildArch:	noarch
 %if ! %{with bootstrap}
 BuildRequires:	python-sphinx >= 0.6.0
 %endif
-BuildRequires:	python2-distribute
-BuildRequires:	python-distribute
+BuildRequires:	python2-setuptools
+BuildRequires:	python-setuptools
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(python3)
 %rename		python3-%{module}
@@ -117,7 +117,7 @@ cd ..
 %if ! %{with bootstrap}
 %doc python3/doc/.build/html
 %endif
-#%{_bindir}/nosetests-2*
+%optional %{_bindir}/nosetests-2*
 %{_bindir}/python2-nosetests
 %{_mandir}/man1/python2-nosetests.*
 %{py2_puresitedir}/*
