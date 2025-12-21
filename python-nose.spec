@@ -17,6 +17,7 @@ Source0:	https://files.pythonhosted.org/packages/source/n/nose3/nose3-%{version}
 
 BuildArch:	noarch
 BuildSystem:	python
+BuildRequires:	make
 BuildRequires:	python%{pyver}dist(setuptools)
 %if ! %{with bootstrap}
 BuildRequires:	python-sphinx >= 0.6.0
